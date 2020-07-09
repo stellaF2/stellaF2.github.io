@@ -25,5 +25,10 @@ npm run test:unit
 npm run lint
 ```
 
+### Generate CHANGELOG.md
+```
+npm run changelog
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
