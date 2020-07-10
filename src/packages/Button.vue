@@ -1,6 +1,11 @@
 <template>
-    <button class='s-button' :class='btnClass' :disabled='disabled'>
-      <s-icon :icon='icon' v-if='icon' class='icon'></s-icon>
+    <button 
+      class='s-button' 
+      :class='btnClass' 
+      :disabled='isDisabled' 
+      @click='$emit("click", $event)'
+    >
+      <s-icon :icon='loading ? "loading": icon' v-if='icon' class='icon'></s-icon>
       <span v-if='this.$slots.default'>
         <slot></slot>
       </span>
@@ -28,6 +33,7 @@ export default {
     circle: Boolean,
     iconRight: Boolean,
     disabled: Boolean,
+    loading: Boolean,
   },
   name: 's-button',
   computed: {
@@ -42,6 +48,9 @@ export default {
       this.icon && this.type && this.iconRight && classes.push('icon-right');
       return classes;
     },
+    isDisabled() {
+      return this.loading || this.disabled || this.icon ==='loading';
+    }
   },
   components: {
     SIcon,
@@ -126,9 +135,23 @@ $active-color: #F78989;
       order: 2;
     }
   }
-  &:disabled {
+  
+}
+[disabled] {
+  &.s-button {
     cursor: not-allowed;
     opacity: .7;
+    &:hover {
+      background: none;
+      border: 1px solid $border-color;
+    }
+    @each $type, $color in (primary:$primary, success: $success, info: $info, danger: $danger, warning: $warning, purple: $purple) {
+      &-#{$type}:hover {
+        background: #{$color};
+        border: #{$color};
+        color: #fff;
+      }
+    }
   }
 }
 </style>

@@ -2,12 +2,12 @@
   <div>
     <h2>button 按钮</h2>
     <s-button>default</s-button>
-    <s-button type="primary">primary</s-button>
-    <s-button type="success">success</s-button>
-    <s-button type="info">info</s-button>
-    <s-button type="danger">danger</s-button>
-    <s-button type="warning">warning</s-button>
-    <s-button type="purple">pink</s-button>
+    <s-button @click="handleClick" type="primary">primary</s-button>
+    <s-button @click="handleClick" type="success">success</s-button>
+    <s-button @click="handleClick" type="info">info</s-button>
+    <s-button @click="handleClick" type="danger">danger</s-button>
+    <s-button @click="handleClick" type="warning">warning</s-button>
+    <s-button @click="handleClick" type="purple">pink</s-button>
 
     <div>
       <s-button round>default round</s-button>
@@ -30,14 +30,16 @@
     </div>
 
     <div>
-      <s-button icon="loading" circle disabled></s-button>
-      <s-button type="primary" icon="delete" circle></s-button>
-      <s-button type="success" icon="down" circle></s-button>
+      <s-button icon="close" circle @click='handleClick' loading></s-button>
+      <s-button type="primary" icon="delete" circle disabled></s-button>
+      <s-button type="success" icon="loading" circle></s-button>
       <s-button type="info" icon="selection" circle></s-button>
       <s-button type="danger" icon="save" circle></s-button>
       <s-button type="warning" icon="collection" circle></s-button>
       <s-button type="purple" icon="addresslist" circle></s-button>
     </div>
+
+    <h2>按钮组</h2>
 
     <h2>icon 图标</h2>
     <s-icon icon="delete"></s-icon>
@@ -58,7 +60,12 @@
 
 <script>
 export default {
-  name: 'basic'
+  name: 'basic',
+  methods: {
+    handleClick(e) {
+      console.log(e, 'e');
+    }
+  }
 }
 </script>
 
