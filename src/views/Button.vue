@@ -7,7 +7,7 @@
     <s-button @click="handleClick" type="info">info</s-button>
     <s-button @click="handleClick" type="danger">danger</s-button>
     <s-button @click="handleClick" type="warning">warning</s-button>
-    <s-button @click="handleClick" type="purple">pink</s-button>
+    <s-button @click="handleClick" type="purple">purple</s-button>
 
     <div>
       <s-button round>default round</s-button>
@@ -16,7 +16,7 @@
       <s-button round type="info">info round</s-button>
       <s-button round type="danger">danger round</s-button>
       <s-button round type="warning">warning round</s-button>
-      <s-button round type="purple">pink round</s-button>
+      <s-button round type="purple">purple round</s-button>
     </div>
 
     <div>
