@@ -1,26 +1,27 @@
 <template>
   <div id='app'>
-    <h1>basic 基础组件</h1>
-    <basic></basic>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Basic from './views/Basic';
 
 export default {
   name: 'app',
-  components: {
-    Basic,
-  }
 };
 </script>
 
 <style lang="scss">
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;;
+}
 #app {
-  padding: 20px;
+  min-height: 100vh;
+  display: flow-root;
   h1 {
-    color: #ff5d8f;
+    color: #333;
     border-bottom: dashed 1px #ff5d8f;
   }
   h2 {

@@ -1,9 +1,10 @@
-import Button from './Button.vue';
-import Icon from './Icon.vue';
+let components = require.context('./', false, /\.vue$/);
+components = components.keys().map(c => components(c).default);
 
 function install(Vue) {
-  Vue.component(Button.name, Button);
-  Vue.component(Icon.name, Icon);
+  components.forEach(C => {
+    Vue.component(C.name, C);
+  });
 }
 
 if (window && typeof window.Vue !== 'undefined') {
