@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$border-radius: 4px;
+$btn-round: 20px;
+$box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+
+$primary: #ff87ab;
+$success: #67C23A;
+$warning: #ffa931;
+$danger: #ef233c;
+$info: #2AA8DA;
+$purple: #C99DFF;
+
+
+$primary-hover: #f4acb7;
+$success-hover: #85ce61;
+$warning-hover: #ffb800;
+$danger-hover: #ff5a5f;
+$info-hover: #71BEE0;
+$purple-hover: #BAB1F6;
+
+$primary-active: #ff5d8f;
+$success-active: #5daf34;
+$warning-active: #ec9f05;
+$danger-active: #d80032;
+$info-active: #0D83C1;
+$purple-active: #A390F9; 

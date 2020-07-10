@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "wc": "vue-cli-service build --target wc --name stella- src/packages/*.vue",
+    "wc:async": "vue-cli-service build --target wc-async --name stella src/packages/*.vue",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
