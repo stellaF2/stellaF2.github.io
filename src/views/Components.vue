@@ -4,7 +4,7 @@
       <h3>Stella-UI</h3>
       <h3 class='subtitle'>Basic</h3>
       <router-link to='/components/layout'>Layout</router-link>
-      <router-link to='/components/container'>Container 布局容器</router-link>
+      <router-link to='/components/container'>Container</router-link>
       <router-link to='/components/button'>Button</router-link>
       <router-link to='/components/icon'>Icon</router-link>
       <h3 class='subtitle'>Form</h3>
@@ -27,7 +27,7 @@ export default {
 .container {
   display: flex;
   margin: 0 auto;
-  width: 80%;
+  max-width: 1200px;
   h3 {
     font-size: 28px;
   }
@@ -35,7 +35,7 @@ export default {
     transition: opacity .5s;
     padding: 20px 0 0 20px;
     opacity: .5;
-    flex: 0 0 200px;
+    flex: 0 0 150px;
     &:hover {
       opacity: 1;
     }

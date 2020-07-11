@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h2>button 按钮</h2>
+    <h2>Button 按钮</h2>
     <s-button>default</s-button>
     <s-button @click="handleClick" type="primary">primary</s-button>
     <s-button @click="handleClick" type="success">success</s-button>
     <s-button @click="handleClick" type="info">info</s-button>
     <s-button @click="handleClick" type="danger">danger</s-button>
     <s-button @click="handleClick" type="warning">warning</s-button>
-    <s-button @click="handleClick" type="purple">purple</s-button>
+    <s-button @click="handleClick" type="purple">purpleB</s-button>
 
     <div>
       <s-button round>default round</s-button>

@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>layout</h2>
+      <h2>Layout 布局</h2>
       <h3>基础布局</h3>
       <s-row>
         <s-col :span='24'><div></div></s-col>
