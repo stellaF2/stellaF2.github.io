@@ -23,6 +23,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='scss' scoped>
+.s-button {
+  margin: 10px 10px 0 0;
+}
 </style>

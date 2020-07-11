@@ -26,6 +26,8 @@ export default {
 
 .container {
   display: flex;
+  margin: 0 auto;
+  width: 80%;
   h3 {
     font-size: 28px;
   }
