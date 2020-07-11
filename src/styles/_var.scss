@@ -8,6 +8,9 @@ $border-radius: 4px;
 $btn-round: 20px;
 $box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
 
+$grey: #DCDFE6;
+$lightPink: #FFDFE8;
+
 $primary: #ff87ab;
 $success: #67C23A;
 $warning: #ffa931;
@@ -30,3 +33,22 @@ $info-active: #0D83C1;
 $purple-active: #A390F9; 
 
 $pink: #E198A8;
+
+@mixin scrollBarStyle() {
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 5px #AFAFAF;
+        background: rgba(175,175,175, 0.5);
+    }
+}
+@mixin scrollBarStyleHide() {
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+}

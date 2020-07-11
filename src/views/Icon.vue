@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Icon 图标</h2>
+    <h3>Icon 图标</h3>
     <s-icon icon="delete"></s-icon>
     <s-icon icon="down"></s-icon>
     <s-icon icon="selection"></s-icon>

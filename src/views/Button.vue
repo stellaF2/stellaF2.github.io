@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Button 按钮</h2>
+    <h3>Button 按钮</h3>
     <s-button>default</s-button>
     <s-button @click="handleClick" type="primary">primary</s-button>
     <s-button @click="handleClick" type="success">success</s-button>

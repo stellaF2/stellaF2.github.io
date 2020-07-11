@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Container 容器</h2>
+      <h3>Container 容器</h3>
       <s-container class='demo-s-container'>
         <s-header>header</s-header>
         <s-main>main</s-main>
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import '@/styles/_var.scss';
 .demo-s-container {
   text-align: center;
