@@ -28,6 +28,5 @@ export default {
     padding: 20px 0;
     color: #F67379;
   }
-  
 }
 </style>

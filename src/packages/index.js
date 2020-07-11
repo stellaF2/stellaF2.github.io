@@ -1,9 +1,9 @@
-let components = require.context('./', false, /\.vue$/);
+let components = require.context('./', true, /\.vue$/);
 components = components.keys().map(c => components(c).default);
 
 function install(Vue) {
   components.forEach(C => {
-    Vue.component(C.name, C);
+    C.name && Vue.component(C.name, C);
   });
 }
 

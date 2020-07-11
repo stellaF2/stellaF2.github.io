@@ -4,6 +4,7 @@ import Icon from '@/views/Icon.vue';
 import Layout from '@/views/Layout.vue';
 import Components from '@/views/Components.vue';
 import Form from '@/views/Form.vue';
+import Container from '@/views/Container.vue';
 
 const routes = [{
     path: '/',
@@ -26,6 +27,9 @@ const routes = [{
     }, {
         path: 'form',
         component: Form,
+    }, {
+        path: 'container',
+        component: Container,
     }]
 }];
 

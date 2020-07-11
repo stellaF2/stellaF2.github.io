@@ -1,14 +1,17 @@
 <template>
   <div class='container'>
     <div class="nav">
-      <h3>Component</h3>
-      <div class='subtitle'>Basic</div>
-      <router-link to='/components/button'>Button</router-link>
+      <h3>Stella-UI</h3>
+      <h3 class='subtitle'>Basic</h3>
       <router-link to='/components/layout'>Layout</router-link>
+      <router-link to='/components/container'>Container 布局容器</router-link>
+      <router-link to='/components/button'>Button</router-link>
       <router-link to='/components/icon'>Icon</router-link>
-      <div class='subtitle'>Form</div>
+      <h3 class='subtitle'>Form</h3>
     </div>
-    <router-view></router-view>
+    <div class='content'>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -22,12 +25,15 @@ export default {
 @import '../styles/_var.scss';
 
 .container {
-  display: grid;
-  grid-template-columns: 160px auto;
+  display: flex;
+  h3 {
+    font-size: 28px;
+  }
   .nav {
     transition: opacity .5s;
-    padding: 50px 0 0 20px;
+    padding: 20px 0 0 20px;
     opacity: .5;
+    flex: 0 0 200px;
     &:hover {
       opacity: 1;
     }
@@ -44,7 +50,7 @@ export default {
       text-decoration: none;
       padding: 10px 0 0;
       color: #333;
-      &:hover {
+      &:hover, &.router-link-active {
         color: $primary;
         opacity: 0.7;
       }
@@ -57,6 +63,10 @@ export default {
         }
       }
     }
+  }
+  .content {
+    flex: 1 1 auto;
+    padding: 10px;
   }
 }
 </style>

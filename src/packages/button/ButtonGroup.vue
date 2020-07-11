@@ -13,8 +13,8 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
-@import '../styles/_var.scss';
+<style lang='scss'>
+@import '@/styles/_var.scss';
 
 .s-button-group {
     button {

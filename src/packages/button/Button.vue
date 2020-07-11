@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SIcon from './Icon';
+import SIcon from '../Icon';
 const btnTypes = ['warning', 'success', 'danger', 'info', 'primary', 'pink', 'purple'];
 
 export default {
@@ -58,8 +58,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import '../styles/_var.scss';
+<style lang="scss">
+@import '@/styles/_var.scss';
 $height: 42px;
 $font-size: 16px;
 $color: #606266;

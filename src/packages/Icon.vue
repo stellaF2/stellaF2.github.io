@@ -15,7 +15,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .s-icon {
   width: 30px;
   height: 30px;
