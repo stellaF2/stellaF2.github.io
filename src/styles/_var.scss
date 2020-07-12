@@ -1,15 +1,12 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 $border-radius: 4px;
 $btn-round: 20px;
 $box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
 
 $grey: #DCDFE6;
-$lightPink: #FFDFE8;
+$pink: #E198A8;
+$lightPink: #FFE7EE;
+$font-color:#606266;
+$font-grey: #C0C4CF;
 
 $primary: #ff87ab;
 $success: #67C23A;
@@ -31,8 +28,6 @@ $warning-active: #ec9f05;
 $danger-active: #d80032;
 $info-active: #0D83C1;
 $purple-active: #A390F9; 
-
-$pink: #E198A8;
 
 @mixin scrollBarStyle() {
     &::-webkit-scrollbar {

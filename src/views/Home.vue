@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '@/styles/_var.scss';
+
 #app .container {
     width:100vw;
     height: 100vh;
@@ -28,19 +30,39 @@ export default {
     text-align: center;
     margin: 0 auto;
     padding-top: 80px;
+    opacity: .8;
+    &:hover {
+        opacity: 1;
+    }
     .logo {
         height: 100%;
         border-radius: 50%;
     }
     h1 {
         text-shadow: 10px 10px rbga(0,0,0,.1);
+        color: $primary;
     }
     p {
         line-height: 50px;
+        font-style: italic;
     }
     a, h1 {
         border-bottom: 0;
         text-decoration: none;
+    }
+     a {
+      text-decoration: none;
+      padding: 10px 0 0;
+      color: #666;
+      font-weight: bold;
+      &:hover,
+      &.router-link-active {
+        opacity: 0.7;
+      }
+      &:active,
+      &:visited {
+        opacity: 1;
+      }
     }
 }
 </style>

@@ -16,7 +16,6 @@ export default {
   },
   mounted() {
     this.isVertical = this.$children.some(checkC);
-    console.log(this.isVertical)
   },
 };
 </script>

@@ -44,7 +44,7 @@
 
 <script>
 export default {
-    name: 'container'
+    name: 'basic-container'
 }
 </script>
 

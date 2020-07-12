@@ -5,6 +5,8 @@ import Layout from '@/views/Layout.vue';
 import Components from '@/views/Components.vue';
 import Form from '@/views/Form.vue';
 import Container from '@/views/Container.vue';
+import Input from '@/views/Input.vue';
+import Upload from '@/views/Upload.vue';
 
 const routes = [{
     path: '/',
@@ -30,6 +32,12 @@ const routes = [{
     }, {
         path: 'container',
         component: Container,
+    }, {
+        path: 'input',
+        component: Input,
+    }, {
+        path: 'upload',
+        component: Upload,
     }]
 }];
 

@@ -1,5 +1,10 @@
 <template>
-  <svg class="s-icon" aria-hidden="true" :class='icon'>
+  <svg 
+    class="s-icon" 
+    aria-hidden="true" 
+    :class='icon' 
+    @click='$emit("click", $event)'
+  >
     <use :xlink:href="`#icon-${icon}`" />
   </svg>
 </template>
@@ -11,7 +16,7 @@ export default {
   name: "s-icon",
   props: {
     icon: String
-  }
+  },
 };
 </script>
 

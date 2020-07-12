@@ -2,7 +2,11 @@
   <div>
     <s-container class='demo-container'>
       <s-header>
-        <img src="@/assets/logo.jpg" alt="logo"><h3>Stella-UI</h3>
+        <img 
+          src="@/assets/logo.jpg" 
+          alt="logo" 
+        >
+        <h3 @click='$router.push("/")' style='cursor: pointer;'>Stella-UI</h3>
       </s-header>
       <s-container>
         <s-aside width='150px'>
@@ -13,6 +17,8 @@
           <router-link to="/components/button">Button</router-link>
           <router-link to="/components/icon">Icon</router-link>
           <h3 class="subtitle">Form</h3>
+          <router-link to='/components/input'>Input</router-link>
+          <router-link to='/components/upload'>Upload</router-link>
         </s-aside>
         <s-main>
           <router-view></router-view>
@@ -36,7 +42,7 @@
 
 <script>
 export default {
-  name: "components"
+  name: "components",
 };
 </script>
 
