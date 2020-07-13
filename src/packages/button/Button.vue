@@ -32,6 +32,7 @@ export default {
     icon: String,
     circle: Boolean,
     iconRight: Boolean,
+    iconLeft: Boolean,
     disabled: Boolean,
     loading: Boolean,
   },
@@ -46,6 +47,7 @@ export default {
       this.circle && classes.push('circle');
       this.type.length && this.icon && classes.push('white');
       this.icon && this.type && this.iconRight && classes.push('icon-right');
+      this.icon && this.type && this.$slots.default && classes.push('icon-left');
       return classes;
     },
     isDisabled() {
@@ -134,9 +136,14 @@ $active-color: #F78989;
   &.icon-right {
     svg {
       order: 2;
+      padding-left: 4px;
     }
   }
-  
+  &.icon-left {
+    svg {
+      padding-right: 4px;
+    }
+  }
 }
 [disabled] {
   &.s-button {

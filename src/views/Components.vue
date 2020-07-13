@@ -9,20 +9,23 @@
         <h3 @click='$router.push("/")' style='cursor: pointer;'>Stella-UI</h3>
       </s-header>
       <s-container>
-        <s-aside width='150px'>
+        <s-aside :class='{isShowAside}' ref='aside' width='150px' class='demo-contaiener-aside' v-click-outside='handleClickOutside'>
           <h3>Componnets</h3>
-          <router-link to="/components/intro">Introduction</router-link>
+          <a @click='handleJump("/components/intro")'>Introduction</a>
           <h3 class="subtitle">Basic</h3>
-          <router-link to="/components/layout">Layout</router-link>
-          <router-link to="/components/container">Container</router-link>
-          <router-link to="/components/button">Button</router-link>
-          <router-link to="/components/icon">Icon</router-link>
+          <a @click='handleJump("/components/layout")'>Layout</a>
+          <a @click='handleJump("/components/container")'>Container</a>
+          <a @click='handleJump("/components/button")'>Button</a>
+          <a @click='handleJump("/components/icon")'>Icon</a>
           <h3 class="subtitle">Form</h3>
-          <router-link to='/components/input'>Input</router-link>
-          <router-link to='/components/upload'>Upload</router-link>
+          <a @click='handleJump("/components/input")'>Input</a>
+          <a @click='handleJump("/components/upload")'>Upload</a>
         </s-aside>
         <s-main>
-          <router-view></router-view>
+          <s-icon @click="toggleAside" icon='more' class='demo-container_more' ref='icon'></s-icon>
+          <transition>
+            <router-view></router-view>
+          </transition>
         </s-main>
       </s-container>
     </s-container>
@@ -32,6 +35,23 @@
 <script>
 export default {
   name: "components",
+  data() {
+    return {
+      isShowAside: false,
+    }
+  },
+  methods: {
+    toggleAside() {
+      this.isShowAside = !this.isShowAside;
+    },
+    handleClickOutside(target) {
+      if (target !== this.$refs.icon.$el) this.isShowAside = false;
+    },
+    handleJump(path) {
+      path !== this.$route.path && this.$router.push(path);
+      this.isShowAside = false;
+    }
+  }
 };
 </script>
 
@@ -55,6 +75,7 @@ export default {
     line-height: 60px;
     h3 {
       color: $primary;
+      display: inline-block;
     }
     img {
       height: 100%;
@@ -66,11 +87,26 @@ export default {
     max-height: 100%;
     overflow-y: scroll;
   }
+  .demo-container_more {
+    margin-right: -100px;
+    transition: opacity, margin .5s linear;
+    float: right;
+    cursor: pointer;
+    opacity: .5;
+    z-index: 2;
+    position: relative;
+    &:hover {
+      opacity: 1;
+    }
+  }
   .s-aside {
     @include scrollBarStyle;
-    transition: opacity 0.5s;
+    transition: opacity, margin 0.5s linear;
     padding: 20px 0 0 20px;
     opacity: 0.5;
+    &.isShowAside {
+      margin-left: 0 !important;
+    }
     h2 {
       color: #333 !important;
     }
@@ -90,6 +126,7 @@ export default {
       text-decoration: none;
       padding: 10px 0 0;
       color: #333;
+      cursor: pointer;
       &:hover,
       &.router-link-active {
         color: $primary;
@@ -106,9 +143,26 @@ export default {
     }
   }
   .s-main {
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
     @include scrollBarStyleHide;
     width: calc(100% - 150px);
   }
 }
+@media only screen and (max-width: 768px) {
+    .demo-container {
+      .s-container {
+        .s-aside.demo-contaiener-aside {
+          margin-left: -150px;
+          position: absolute;
+          background: #fff;
+          height: calc(100vh - 60px);
+          z-index: 2;
+          opacity: .9;
+        }
+        .demo-container_more {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 </style>
