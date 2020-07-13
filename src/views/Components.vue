@@ -42,6 +42,7 @@ export default {
   },
   methods: {
     toggleAside() {
+      console.log(this.isShowAside);
       this.isShowAside = !this.isShowAside;
     },
     handleClickOutside(target) {
