@@ -4,7 +4,7 @@
       <div>
         <h1>Stella UI</h1>
         <p>A simple and elegant component library based on Vue 2.x</p>
-        <router-link to='components'>Get Started</router-link>
+        <router-link to='components/intro'>Get Started</router-link>
       </div>
   </div>
 </template>

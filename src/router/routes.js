@@ -7,6 +7,7 @@ import Form from '@/views/Form.vue';
 import Container from '@/views/Container.vue';
 import Input from '@/views/Input.vue';
 import Upload from '@/views/Upload.vue';
+import Intro from '@/views/Intro.vue';
 
 const routes = [{
     path: '/',
@@ -15,6 +16,10 @@ const routes = [{
     path: '/components',
     component: Components,
     children: [{
+        path: 'intro',
+        name: 'intro',
+        component: Intro,
+    },{
         path: 'button',
         name: 'button',
         component: Button,

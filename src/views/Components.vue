@@ -11,6 +11,7 @@
       <s-container>
         <s-aside width='150px'>
           <h3>Componnets</h3>
+          <router-link to="/components/intro">Introduction</router-link>
           <h3 class="subtitle">Basic</h3>
           <router-link to="/components/layout">Layout</router-link>
           <router-link to="/components/container">Container</router-link>
@@ -22,21 +23,9 @@
         </s-aside>
         <s-main>
           <router-view></router-view>
-
         </s-main>
       </s-container>
     </s-container>
-    <!-- <div class="container">
-      <div class="nav">
-        <h3>Stella-UI</h3>
-        <h3 class="subtitle">Basic</h3>
-        <router-link to="/components/layout">Layout</router-link>
-        <router-link to="/components/container">Container</router-link>
-        <router-link to="/components/button">Button</router-link>
-        <router-link to="/components/icon">Icon</router-link>
-        <h3 class="subtitle">Form</h3>
-      </div>
-    </div> -->
   </div>
 </template>
 
