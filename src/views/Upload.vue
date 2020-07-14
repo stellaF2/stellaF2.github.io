@@ -1,6 +1,6 @@
 <template>
   <div class="demo-upload">
-    <h3>Upload 上传文件</h3>
+    <h3>Upload 点击上传</h3>
     <s-upload
       name="avatar"
       action="http://localhost:3000/upload"
@@ -14,6 +14,28 @@
       :on-error='handleError'
       :on-progress='handleProgress'
       :beforeUpload='beforeUpload'
+    >
+      <s-button v-slot:default icon='upload' type='primary'>点击上传</s-button>
+      <template #tip>
+        <p>只能上传 jpg/png 文件，且不超过 500kb</p>
+      </template>
+    </s-upload>
+
+    <h3>Upload 拖拽上传</h3>
+    <s-upload
+      name="avatar"
+      action="http://localhost:3000/upload"
+      :limit="3"
+      :file-list='fileList'
+      :multiple="true"
+      accept='image/jpeg'
+      :on-exceed="handleExceed"
+      :on-change="handleChange"
+      :on-success='handleSuccess'
+      :on-error='handleError'
+      :on-progress='handleProgress'
+      :beforeUpload='beforeUpload'
+      :drag='true'
     >
       <s-button v-slot:default icon='upload' type='primary'>点击上传</s-button>
       <template #tip>

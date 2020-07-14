@@ -1,29 +1,52 @@
 <template>
   <div class='s-upload'>
-    <div @click="handleClick" class='s-upload__btn'>
-      <slot></slot>
-      <input 
-        type="file"
-        :dname='name'
-        :accept="accept"
-        :multiple='multiple'
-        :action='action'
-        @change="handleChange"
-        ref='input'
-        class='s-upload__btn_inner'
-      >
-    </div>
+    <s-dragger v-if='drag' :accpet='accept' @file='uploadFiles'></s-dragger>
+    <template v-else>
+      <div @click="handleClick" class='s-upload__btn'>
+        <slot></slot>
+        <input 
+          type="file"
+          :dname='name'
+          :accept="accept"
+          :multiple='multiple'
+          :action='action'
+          @change="handleChange"
+          ref='input'
+          class='s-upload__btn_inner'
+        >
+      </div>
+    </template>
+
     <div>
       <slot name='tip'></slot>
     </div>
+    <ul v-if='files.length'>
+      <li v-for='file in files' :key='file.uid' >
+        hello
+        <div class='list-item'>
+          <s-icon icon='img'></s-icon>
+          {{ file.name }}
+          {{ file.status }}
+          <s-progress v-if='file.status === "uploading"' :percentage='file.percentage'></s-progress>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import ajax from './ajax';
+import SIcon from '../Icon';
+import SProgress from './Progress';
+import SDragger from './UploadDragger';
 
 export default {
     name: 's-upload',
+    components: {
+      SIcon,
+      SProgress,
+      SDragger,
+    },
     props: {
       name: {
         type: String,
@@ -50,6 +73,10 @@ export default {
         type: Function,
         default: ajax,
       },
+      drag: {
+        type: Boolean,
+        default: false,
+      }
     },
     data() {
       return {
@@ -92,10 +119,16 @@ export default {
         const options = {
           file: rawFile,
           filename: this.name,
-          aciton: this.action,
-          onProgress: env => {},
-          onSuccess: env => {},
-          onError: error => {},
+          action: this.action,
+          onProgress: env => {
+            this.handleProgress(env, rawFile);
+          },
+          onSuccess: env => {
+            this.handleSuccess(env, rawFile);
+          },
+          onError: error => {
+            this.handleError(error, rawFile);
+          },
         }
         let req = this.httpRequest(options);
         this.reqs[uid]   = req;
@@ -105,11 +138,34 @@ export default {
       },
       uploadFile(rawFile) {
         if(!this.beforeUpload) {
-          
+          return this.post(rawFile);
         }
         this.post(rawFile);
       },
-      handleFiles(files){
+      // 获取源文件
+      getFile(rawFile) {
+        return this.files.find(file => file.uid == rawFile.uid);
+      },
+      handleProgress(env, rawFile) {
+        let file = this.getFile(rawFile);
+        file.status = 'uploading';
+        file.percentage = env.percent || 0;
+        this.onProgress(env, rawFile);
+      },
+      handleSuccess(env, rawFile) {
+        let file = this.getFile(rawFile);
+        file.status = 'success';
+        this.onSuccess(env, rawFile);
+        this.onChange(file);
+      },
+      handleError(err, rawFile) {
+        let file = this.getFile(rawFile);
+        file.status = 'fail';
+        this.onError(err, rawFile);
+        this.onChange(file);
+        delete this.reqs[file.uid];
+      },
+      uploadFiles(files){
         if (this.limit && this.fileList.length + files.length > this.limit) {
           this.onExceed && this.onExceed(files, this.fileList);
           return;
@@ -123,7 +179,7 @@ export default {
       handleChange(e) {
         const files = e.target.files;
         // 多文件上传，并发上传（创建多个 ajax）
-        this.handleFiles(files);
+        this.uploadFiles(files);
       },
     }
 }
@@ -133,9 +189,13 @@ export default {
 .s-upload {
   .s-upload__btn {
     display: inline-block;
+  }
   .s-upload__btn_inner {
     display: none;
   }
+  ul {
+    list-style: none;
   }
+  
 }
 </style>

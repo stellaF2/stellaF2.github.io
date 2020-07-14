@@ -18,4 +18,5 @@ export default function ajax(options) {
     const fd = new FormData();
     fd.append(filename, file);
     xhr.send(fd);
+    return xhr;
 }
