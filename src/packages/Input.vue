@@ -9,6 +9,7 @@
         :disabled='disabled'
         @input='input'
         @focus="focus"
+        @blur='blur'
         @mouseenter="mouseenter"
         :name='name'
         ref='s-input'
@@ -59,10 +60,10 @@ export default {
         suffixIcon: String,
         prefixIcon: String,
         name: String,
+        value: null,
     },
     data() {
       return {
-        value: '',
         isFocus: true,
         passwordVisible: false,
         ctype: 'text',

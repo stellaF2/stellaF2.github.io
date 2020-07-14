@@ -35,8 +35,8 @@ export default {
       font-size: 16px;
       font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
       line-height: 26px;
-      box-shadow: 6px 6px 10px 4px rgba(0,0,0,.1);
-      border-radius: 6px;
+      box-shadow: 6px 6px 10px 0 rgba(0,0,0,.1), -6px -6px 10px 0 rgba(0,0,0,.1);
+      border-radius: 4px;
     }
   }
 }

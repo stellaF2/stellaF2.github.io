@@ -8,6 +8,7 @@ import Container from '@/views/Container.vue';
 import Input from '@/views/Input.vue';
 import Upload from '@/views/Upload.vue';
 import Intro from '@/views/Intro.vue';
+import DatePicker from '@/views/DatePicker.vue';
 
 const routes = [{
     path: '/',
@@ -43,6 +44,9 @@ const routes = [{
     }, {
         path: 'upload',
         component: Upload,
+    }, {
+        path: 'datePicker',
+        component: DatePicker,
     }]
 }];
 

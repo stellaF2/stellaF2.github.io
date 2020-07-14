@@ -20,6 +20,7 @@
           <h3 class="subtitle">Form</h3>
           <a @click='handleJump("/components/input")'>Input</a>
           <a @click='handleJump("/components/upload")'>Upload</a>
+          <a @click='handleJump("/components/datePicker")'>DatePicker</a>
         </s-aside>
         <s-main>
           <s-icon @click="toggleAside" icon='more' class='demo-container_more' ref='icon'></s-icon>

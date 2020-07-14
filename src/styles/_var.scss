@@ -1,6 +1,6 @@
 $border-radius: 4px;
 $btn-round: 20px;
-$box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+$box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 
 $grey: #DCDFE6;
 $pink: #E198A8;
@@ -46,4 +46,12 @@ $purple-active: #A390F9;
         height: 0;
         background: transparent;
     }
+}
+
+/* transition */ 
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
