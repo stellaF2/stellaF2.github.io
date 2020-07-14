@@ -38,7 +38,9 @@ export default {
     handleChange(file) {
       console.log(file);
     },
-    handleSuccess() {},
+    handleSuccess(e) {
+      console.log(e);
+    },
     handleError() {},
     handleProgress() {},
     beforeUpload() {
