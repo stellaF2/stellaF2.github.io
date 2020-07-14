@@ -1,5 +1,5 @@
 module.exports = {
-    outputDir: 'dist',
+    outputDir: 'stella',
     lintOnSave: true,
-    publicPath: '/stella/ui/',
+    publicPath: '/stella/',
 }
