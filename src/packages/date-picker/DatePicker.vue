@@ -9,11 +9,11 @@
     <transition name='fade' mode='out-in'>
       <div class='s-date-picker-content' v-if='isVisible'>
           <div class='s-date-picker-content-header'>
-              <s-icon icon="d-arrow-left"></s-icon>
-              <s-icon icon="prev"></s-icon>
+              <s-icon icon="d-arrow-left" @click='changeYear(-1)'></s-icon>
+              <s-icon icon="prev" @click='changeMonth(-1)'></s-icon>
               <span class='header-text'>{{tempTime.year}} 年 {{ tempTime.month + 1 }} 月</span>
-              <s-icon icon="next"></s-icon>
-              <s-icon icon="d-arrow-right"></s-icon>
+              <s-icon icon="next" @click='changeMonth(1)'></s-icon>
+              <s-icon icon="d-arrow-right" @click='changeYear(1)'></s-icon>
           </div>
           <div class='s-date-picker-content-body'>
               <template v-if='mode === "date"'>
@@ -24,7 +24,17 @@
                   </div>
                   <div class='body-months'>
                     <div class='months-row' v-for='i in 6' :key='`$row_${i}`'>
-                      <span v-for='j in 7' :key='`col_${j}`' class='body-col'>
+                      <span 
+                        v-for='j in 7' 
+                        :key='`col_${j}`' 
+                        @click='selectDate(getCurrentDate(i,j))'
+                        class='body-col' 
+                        :class='{
+                          isCurrentMonth: isCurrentMonth(getCurrentDate(i, j)),
+                          isCurrentDate: isCurrentDate(getCurrentDate(i,j)),
+                          isSelected: isSelected(getCurrentDate(i,j)),
+                        }'
+                      >
                         {{ getCurrentDate(i, j).getDate()}}
                       </span>
                     </div>
@@ -82,8 +92,9 @@ export default {
       return arr;
     },
     formattedDate() {
+      let m = this.time.month < 10 ? `0${m}` : m;
       if (!this.value) return; // 首次没有日期时，默认为空
-      return `${this.time.year}-${this.time.month}-${this.time.month}`;
+      return `${this.time.year}-${this.time.month + 1}-${this.time.date}`;
     }
   },
   data() {
@@ -97,6 +108,13 @@ export default {
       isVisible: false,
     };
   },
+  watch: {
+    value(newValue) {
+      let [year, month, date] = getYearMontDate(newValue);
+      this.time = { year, month, date };
+      this.tempTime = { ...this.time };
+    }
+  },
   methods: {
       handleFocus() {
         this.isVisible = true;
@@ -107,8 +125,50 @@ export default {
       getCurrentDate(i, j) {
         return this.visibleData[(i-1)*7 + (j-1)];
       },
-      isCurrentMonth(date) {
-        
+      isCurrentMonth(data) {
+        const [y, m] = getYearMontDate(data);
+        const {year, month} = this.tempTime;
+        return y === year && m === month;
+      },
+      isCurrentDate(data) {
+        const [y, m, d] = getYearMontDate(data);
+        const [year, month, date] = getYearMontDate(new Date);
+        return y === year && m === month && d === date;
+      },
+      selectDate(data) {
+        this.$emit('input', data);
+        this.handleBlur();
+      },
+      isSelected(data) {
+        const { year, month, date } = this.time;
+        const [ y, m, d ] = getYearMontDate(data);
+        return year === y && month === m && date === d;
+      },
+      /* 改月和年*/ 
+      changeMonth(count) {
+        // let month = this.tempTime.month + count;
+        // if (month >= 0 && month < 12 ) {
+        //   this.tempTime.month += count;
+        // }else if (month < 0) {
+        //   this.changeYear(-1);
+        //   this.tempTime.month = 11;
+        // }else if (month >=12 ) {
+        //   this.changeMonth(1);
+        //   this.tempTime.month = 0;
+        // }
+
+        // 改进
+        this.stepMonthYear('Month', count);
+      },
+      changeYear(count) {
+        this.stepMonthYear('FullYear', count);
+      },
+      stepMonthYear(key, count) {
+        const oldDate = new Date(this.tempTime.year, this.tempTime.month);
+        const newDate = oldDate[`set${key}`](oldDate[`get${key}`]() + count);
+        const [year, month] = getYearMontDate(new Date(newDate));
+        this.tempTime.year = year;
+        this.tempTime.month = month;
       }
   }
 };
@@ -157,13 +217,34 @@ export default {
         line-height: 40px;
         display: inline-block;
       }
-      .cell, .body-col, .header-text, .s-date-picker-content-header .s-icon {
-        opacity: .7;
+      .cell, .header-text, .s-date-picker-content-header .s-icon {
+        opacity: .6;
         cursor: pointer;
          &:hover {
            color: $primary;
            fill: $primary;
          }
+      }
+      .body-col {
+        cursor: pointer;
+        opacity: .6;
+      }
+      .body-col.isCurrentMonth:not(.isSelected) {
+        opacity: 1;
+        &:hover {
+           color: $primary;
+           fill: $primary;
+         }
+      }
+      
+      .body-col.isSelected{
+        background: $primary;
+        color: #fff;
+        border-radius: 50%;
+      }
+      .body-col.isCurrentDate {
+        color: $primary;
+        background: #fff;
       }
   }
 }

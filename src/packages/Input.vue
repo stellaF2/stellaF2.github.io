@@ -4,13 +4,14 @@
         class='s-input__inner'
         :class='{disabled}'
         :type="ctype"
-        :value='value'
+        :value='defaultValue'
         :placeholder='placeholder'
         :disabled='disabled'
         @input='input'
         @focus="focus"
         @blur='blur'
         @mouseenter="mouseenter"
+        @change='$emit("change", $event)'
         :name='name'
         ref='s-input'
       >
@@ -67,11 +68,17 @@ export default {
         isFocus: true,
         passwordVisible: false,
         ctype: 'text',
+        defaultValue: null,
       }
     },
     mounted(){
       this.passwordVisible = false;
       this.ctype = this.type;
+    },
+    watch: {
+      value(newValue) {
+        this.defaultValue = newValue;
+      }
     },
     computed: {
       classes() {
@@ -95,7 +102,6 @@ export default {
       },
       handleInput(value) {
         this.$emit('input', value);
-        this.value = value;
       },
       handleHover(e, type, isFocus) {
         this.$emit(type, e);
