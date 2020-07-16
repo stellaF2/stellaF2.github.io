@@ -1,35 +1,23 @@
 # stella-ui
 [![npm version](https://badge.fury.io/js/%40stella2%2Fstella-ui.svg)](https://badge.fury.io/js/%40stella2%2Fstella-ui)
 
-## Project setup
+## Install
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm install @stella2/stella-ui --save
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Usage
 
-### Run your unit tests
-```
-npm run test:unit
-```
+```js
+import Vue from 'vue';
+import '@stella2/stella-ui/dist/stella-ui.css';
+import StellaUI from '@stella2/stella-ui';
+import App from './App.vue';
 
-### Lints and fixes files
-```
-npm run lint
-```
+Vue.use(StellaUI);
 
-### Generate CHANGELOG.md
+new Vue({
+el: '#app',
+render: h => h(App),
+});
 ```
-npm run changelog
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

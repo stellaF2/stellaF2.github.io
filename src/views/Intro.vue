@@ -19,7 +19,7 @@
       <pre v-highlight>
         <code>
           import Vue from 'vue';
-          import 'stella-ui/lib/theme-chalk/index.css';
+          import '@stella2/stella-ui/dist/stella-ui.css';
           import StellaUI from '@stella2/stella-ui';
           import App from './App.vue';
 
