@@ -5,13 +5,16 @@
         prefix-icon='clock'
         @focus='handleFocus'
         :value='formattedDate'
+        @change='handleChange'
     ></s-input>
     <transition name='fade' mode='out-in'>
       <div class='s-date-picker-content' v-if='isVisible'>
           <div class='s-date-picker-content-header'>
               <s-icon icon="d-arrow-left" @click='changeYear(-1)'></s-icon>
               <s-icon icon="prev" @click='changeMonth(-1)'></s-icon>
-              <span class='header-text'>{{tempTime.year}} 年 {{ tempTime.month + 1 }} 月</span>
+              <span class='header-text'>
+                <span @click="mode = 'year'">{{tempTime.year}}</span> 年 
+                <span @click="mode = 'month'">{{ tempTime.month + 1 }}</span> 月</span>
               <s-icon icon="next" @click='changeMonth(1)'></s-icon>
               <s-icon icon="d-arrow-right" @click='changeYear(1)'></s-icon>
           </div>
@@ -116,6 +119,16 @@ export default {
     }
   },
   methods: {
+      handleChange(e) {
+        let newValue = e.target.value;
+        let regExp = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
+        if (newValue.match(regExp)) {
+          this.$emit('input', new Date(RegExp.$1, RegExp.$2 -1, RegExp.$3));
+        } else {
+          e.target.value = this.formattedDate;
+        }
+        this.handleBlur();
+      },
       handleFocus() {
         this.isVisible = true;
       },
@@ -217,7 +230,7 @@ export default {
         line-height: 40px;
         display: inline-block;
       }
-      .cell, .header-text, .s-date-picker-content-header .s-icon {
+      .cell, .header-text span, .s-date-picker-content-header .s-icon {
         opacity: .6;
         cursor: pointer;
          &:hover {

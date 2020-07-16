@@ -91,7 +91,7 @@ export default {
   }
   .demo-container_more {
     margin-right: -100px;
-    transition: opacity, margin .5s linear;
+    transition: all .5s linear;
     float: right;
     cursor: pointer;
     opacity: .5;
@@ -103,7 +103,7 @@ export default {
   }
   .s-aside {
     @include scrollBarStyle;
-    transition: opacity, margin 0.5s linear;
+    transition: all 0.5s linear;
     padding: 20px 0 0 20px;
     opacity: 0.5;
     &.isShowAside {

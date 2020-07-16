@@ -1,4 +1,5 @@
 # stella-ui
+[![npm version](https://badge.fury.io/js/%40stella2%2Fstella-ui.svg)](https://badge.fury.io/js/%40stella2%2Fstella-ui)
 
 ## Project setup
 ```

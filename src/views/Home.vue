@@ -4,7 +4,9 @@
       <div>
         <h1>Stella UI</h1>
         <p>A simple and elegant component library based on Vue 2.x</p>
-        <router-link to='components/intro'>Get Started</router-link>
+        <router-link to='components/intro'>
+          <s-button type='primary' round>Get Started</s-button>
+        </router-link>
       </div>
   </div>
 </template>
@@ -53,8 +55,12 @@ export default {
      a {
       text-decoration: none;
       padding: 10px 0 0;
-      color: #666;
       font-weight: bold;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: 700;
+      display: inline-block;
+      border-radius: 40px;
       &:hover,
       &.router-link-active {
         opacity: 0.7;
